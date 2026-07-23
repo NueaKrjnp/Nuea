@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Letter - ส่งจดหมายสุดพรีเมียม</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts สำหรับฟอนต์ไทยสวยๆ -->
+  <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ================= Section 1: ฟอร์มสร้างจดหมาย (สำหรับผู้ส่ง) ================= -->
+  <div class="container" id="editor-section">
+    <div class="card">
+      <h2>✉️ เขียนจดหมายพรีเมียม</h2>
+      <p class="subtitle">สร้างความประทับใจผ่านจดหมายออนไลน์สุดพิเศษ</p>
+
+      <form id="letter-form">
+        <div class="form-group">
+          <label>จาก (ชื่อผู้ส่ง):</label>
+          <input type="text" id="sender-name" placeholder="ระบุชื่อของคุณ" required>
+        </div>
+
+        <div class="form-group">
+          <label>ถึง (ชื่อผู้รับ):</label>
+          <input type="text" id="recipient-name" placeholder="ระบุชื่อผู้รับ" required>
+        </div>
+
+        <div class="form-group">
+          <label>ข้อความในจดหมาย:</label>
+          <textarea id="letter-message" rows="5" placeholder="พิมพ์ข้อความของคุณที่นี่..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>แนบลิงก์รูปภาพ (Optional):</label>
+          <input type="url" id="image-url" placeholder="https://example.com/image.jpg">
+        </div>
+
+        <div class="form-group">
+          <label>เลือกธีมพื้นหลังกระดาษ:</label>
+          <div class="theme-selector">
+            <label class="theme-option theme-classic active">
+              <input type="radio" name="paper-theme" value="theme-classic" checked>
+              <span>Classic Gold</span>
+            </label>
+            <label class="theme-option theme-rose">
+              <input type="radio" name="paper-theme" value="theme-rose">
+              <span>Rose Romance</span>
+            </label>
+            <label class="theme-option theme-midnight">
+              <input type="radio" name="paper-theme" value="theme-midnight">
+              <span>Midnight Luxury</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">สร้างลิงก์สำหรับส่งจดหมาย 🔗</button>
+      </form>
+
+      <!-- ส่วนแสดงลิงก์เมื่อสร้างเสร็จ -->
+      <div id="link-result" class="link-result hidden">
+        <p>✨ สร้างลิงก์จดหมายเรียบร้อยแล้ว!</p>
+        <div class="link-box">
+          <input type="text" id="generated-link" readonly>
+          <button id="copy-btn" class="btn-secondary">คัดลอก</button>
+        </div>
+        <button id="preview-btn" class="btn-gold">ลองเปิดดูจดหมายนี้ ✉️</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= Section 2: ซองจดหมาย & การแสดงผล (สำหรับผู้รับ) ================= -->
+  <div class="container hidden" id="viewer-section">
+    
+    <!-- ซองจดหมายแบบปิด -->
+    <div class="envelope-wrapper" id="envelope-wrapper">
+      <div class="envelope" id="envelope">
+        <div class="envelope-back"></div>
+        <div class="envelope-paper-preview"></div>
+        <div class="envelope-flaps">
+          <div class="flap top-flap"></div>
+          <div class="flap left-flap"></div>
+          <div class="flap right-flap"></div>
+          <div class="flap bottom-flap"></div>
+        </div>
+        <!-- ตราครั่งกดเพื่อเปิด -->
+        <div class="wax-seal" id="wax-seal">
+          <div class="seal-inner">✦ OPEN ✦</div>
+        </div>
+      </div>
+      <p class="click-hint">กดที่ตราครั่งเพื่อเปิดจดหมาย ✨</p>
+    </div>
+
+    <!-- ตัวกระดาษจดหมาย (จะเลื่อนขึ้นมาเมื่อเปิด) -->
+    <div class="letter-paper hidden" id="letter-paper">
+      <div class="paper-content" id="paper-content">
+        <div class="letter-header">
+          <span class="salutation">ถึง <span id="view-recipient">...</span>,</span>
+        </div>
+        <div class="letter-body">
+          <p id="view-message">...</p>
+          <div id="view-image-container" class="image-container hidden">
+            <img id="view-image" src="" alt="Attached Image">
+          </div>
+        </div>
+        <div class="letter-footer">
+          <p class="valediction">ด้วยความรู้สึกดีๆ,</p>
+          <p class="signature" id="view-sender">...</p>
+        </div>
+      </div>
+      <button id="btn-back-editor" class="btn-secondary back-btn">เขียนจดหมายใหม่ ✍️</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
