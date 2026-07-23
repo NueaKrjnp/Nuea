@@ -1,9 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;500&family=Alex+Brush&display=swap');
+
 :root {
-  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
-  --gold-primary: #d4af37;
-  --gold-hover: #f3e5ab;
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(212, 175, 55, 0.2);
+  --bg-main: #f8f9fa;
+  --card-bg: #ffffff;
+  --text-main: #18181b;
+  --text-muted: #71717a;
+  --border-color: #e4e4e7;
+  --border-hover: #a1a1aa;
+  --accent: #09090b; /* สีดำหลัก ให้ลุคตัดกันแบบมินิมอล */
+  --accent-soft: #f4f4f5;
+  --radius: 16px;
+  --shadow-subtle: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -13,20 +21,20 @@
 }
 
 body {
-  font-family: 'Prompt', sans-serif;
-  background: var(--bg-gradient);
+  font-family: 'Noto Sans Thai', 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-main);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  padding: 20px;
-  overflow-x: hidden;
+  color: var(--text-main);
+  padding: 24px;
+  -webkit-font-smoothing: antialiased;
 }
 
 .container {
   width: 100%;
-  max-width: 650px;
+  max-width: 520px;
   display: flex;
   justify-content: center;
 }
@@ -35,33 +43,35 @@ body {
   display: none !important;
 }
 
-/* Glassmorphism Card Style */
+/* Card Modern Minimal */
 .card {
   background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 40px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 40px 36px;
   width: 100%;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  box-shadow: var(--shadow-subtle);
+  transition: all 0.3s ease;
 }
 
 h2 {
-  font-family: 'Charm', cursive;
-  font-size: 2.2rem;
-  color: var(--gold-primary);
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--text-main);
   text-align: center;
-  margin-bottom: 5px;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
 }
 
 .subtitle {
   text-align: center;
-  color: #cbd5e1;
-  font-size: 0.9rem;
-  margin-bottom: 25px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 300;
+  margin-bottom: 32px;
 }
 
-/* Form Styles */
+/* Form inputs */
 .form-group {
   margin-bottom: 20px;
 }
@@ -69,132 +79,144 @@ h2 {
 label {
   display: block;
   margin-bottom: 8px;
-  font-size: 0.9rem;
-  color: #e2e8f0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 input[type="text"], input[type="url"], textarea {
   width: 100%;
   padding: 12px 16px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(0, 0, 0, 0.2);
-  color: #fff;
-  font-family: 'Prompt', sans-serif;
-  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+  background: #fafafa;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.925rem;
+  transition: all 0.2s ease;
 }
 
 input:focus, textarea:focus {
   outline: none;
-  border-color: var(--gold-primary);
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  border-color: var(--accent);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(9, 9, 11, 0.05);
 }
 
-/* Theme Selector Buttons */
+/* Theme Selector Minimal */
 .theme-selector {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 8px;
 }
 
 .theme-option {
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
   text-align: center;
   cursor: pointer;
-  font-size: 0.8rem;
-  transition: 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 0.775rem;
+  font-weight: 400;
+  transition: all 0.2s ease;
+  background: #ffffff;
+  color: var(--text-muted);
 }
 
 .theme-option input { display: none; }
 
-.theme-classic { background: #fdfbf7; color: #333; }
-.theme-rose { background: #fff0f5; color: #4a2e35; }
-.theme-midnight { background: #1a1a24; color: #e2e8f0; border-color: #3b3b4f; }
-
 .theme-option.active {
-  border: 2px solid var(--gold-primary);
-  box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
-  transform: translateY(-2px);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 500;
 }
 
 /* Buttons */
 button {
   cursor: pointer;
-  font-family: 'Prompt', sans-serif;
+  font-family: inherit;
   border: none;
   border-radius: 10px;
-  transition: 0.3s;
+  transition: all 0.2s ease;
 }
 
 .btn-primary {
   width: 100%;
   padding: 14px;
-  background: linear-gradient(135deg, #d4af37, #aa7c11);
-  color: #fff;
-  font-weight: 600;
-  font-size: 1rem;
-  margin-top: 10px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-top: 12px;
+  letter-spacing: 0.02em;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+  background: #27272a;
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
-  padding: 10px 15px;
-  background: rgba(255,255,255,0.1);
-  color: #fff;
+  padding: 10px 16px;
+  background: var(--accent-soft);
+  color: var(--text-main);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.btn-secondary:hover {
+  background: #e4e4e7;
 }
 
 .btn-gold {
   width: 100%;
   padding: 12px;
   background: transparent;
-  border: 1px solid var(--gold-primary);
-  color: var(--gold-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-size: 0.875rem;
   margin-top: 10px;
 }
 
 .btn-gold:hover {
-  background: var(--gold-primary);
-  color: #000;
+  border-color: var(--accent);
+  background: #fafafa;
 }
 
-/* Link Result Box */
+/* Link Result */
 .link-result {
-  margin-top: 25px;
+  margin-top: 24px;
   padding-top: 20px;
-  border-top: 1px dashed rgba(255,255,255,0.2);
+  border-top: 1px solid var(--border-color);
   text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
 }
 
 .link-box {
   display: flex;
-  gap: 10px;
-  margin: 10px 0;
+  gap: 8px;
+  margin: 12px 0;
 }
 
-/* ================= Envelope UI & Animation ================= */
+/* ================= Envelope Modern Minimal ================= */
 .envelope-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
 }
 
 .envelope {
-  width: 320px;
-  height: 220px;
-  background: #2a2a38;
+  width: 300px;
+  height: 200px;
+  background: #ffffff;
   position: relative;
   border-radius: 8px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-subtle);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -209,72 +231,70 @@ button {
 
 .top-flap {
   top: 0;
-  border-width: 110px 160px 0 160px;
-  border-color: #38384a transparent transparent transparent;
+  border-width: 100px 150px 0 150px;
+  border-color: #f4f4f5 transparent transparent transparent;
   transform-origin: top;
-  transition: transform 0.6s ease 0.2s, z-index 0.2s 0.4s;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, z-index 0.2s 0.4s;
   z-index: 4;
 }
 
 .left-flap {
   left: 0;
-  border-width: 110px 0 110px 160px;
-  border-color: transparent transparent transparent #2e2e3e;
+  border-width: 100px 0 100px 150px;
+  border-color: transparent transparent transparent #fafafa;
   z-index: 3;
 }
 
 .right-flap {
   right: 0;
-  border-width: 110px 160px 110px 0;
-  border-color: transparent #2e2e3e transparent transparent;
+  border-width: 100px 150px 100px 0;
+  border-color: transparent #fafafa transparent transparent;
   z-index: 3;
 }
 
 .bottom-flap {
   bottom: 0;
-  border-width: 0 160px 110px 160px;
-  border-color: transparent transparent #333344 transparent;
+  border-width: 0 150px 100px 150px;
+  border-color: transparent transparent #ffffff transparent;
   z-index: 3;
+  border-bottom: 1px solid var(--border-color);
 }
 
-/* Wax Seal */
+/* Stamp / Seal Minimal */
 .wax-seal {
   position: absolute;
-  width: 60px;
-  height: 60px;
-  background: radial-gradient(circle, #b91c1c, #7f1d1d);
+  width: 50px;
+  height: 50px;
+  background: var(--accent);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 5;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5), inset 0 0 8px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
 }
 
 .wax-seal:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .seal-inner {
-  font-size: 0.65rem;
-  font-weight: bold;
-  color: #fef08a;
-  letter-spacing: 1px;
-  border: 1px dashed rgba(254, 240, 138, 0.5);
-  padding: 12px 4px;
-  border-radius: 50%;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 1.5px;
 }
 
 .click-hint {
-  margin-top: 20px;
-  color: var(--gold-hover);
-  font-size: 0.9rem;
-  animation: pulse 1.5s infinite;
+  margin-top: 24px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
 }
 
-/* Envelope Open State Class */
+/* Envelope Open State */
 .envelope.open .top-flap {
   transform: rotateX(180deg);
   z-index: 1;
@@ -283,86 +303,89 @@ button {
 .envelope.open .wax-seal {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.3s ease;
 }
 
-/* ================= Letter Paper Themes ================= */
+/* ================= Letter Paper Themes Minimal ================= */
 .letter-paper {
   width: 100%;
-  max-width: 550px;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  animation: openLetter 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  max-width: 500px;
+  padding: 48px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
+  animation: openLetter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   position: relative;
 }
 
-/* Themes Styles */
 .theme-classic-paper {
-  background: #fdfbf7;
-  color: #2c2a29;
-  border: 12px solid #f4efe6;
+  background: #ffffff;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
 }
 
 .theme-rose-paper {
-  background: #fff0f5;
-  color: #4a2e35;
-  border: 12px solid #fce4ec;
+  background: #faf5f5;
+  color: #3f2d2d;
+  border: 1px solid #f0e2e2;
 }
 
 .theme-midnight-paper {
-  background: #181824;
-  color: #f1f5f9;
-  border: 12px solid #232334;
+  background: #18181b;
+  color: #f4f4f5;
+  border: 1px solid #27272a;
 }
 
 .salutation {
-  font-family: 'Charm', cursive;
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-family: 'Alex Brush', cursive;
+  font-size: 2rem;
+  color: var(--text-main);
+}
+
+.theme-midnight-paper .salutation {
+  color: #ffffff;
 }
 
 .letter-body {
-  margin: 25px 0;
+  margin: 32px 0;
   line-height: 1.8;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
+  font-weight: 300;
   white-space: pre-line;
 }
 
 .image-container img {
   max-width: 100%;
-  border-radius: 10px;
-  margin-top: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  margin-top: 20px;
+  border: 1px solid var(--border-color);
 }
 
 .letter-footer {
   text-align: right;
-  margin-top: 30px;
+  margin-top: 40px;
+}
+
+.valediction {
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
 
 .signature {
-  font-family: 'Charm', cursive;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--gold-primary);
+  font-family: 'Alex Brush', cursive;
+  font-size: 2.2rem;
+  margin-top: 4px;
 }
 
 .back-btn {
-  margin-top: 25px;
+  margin-top: 32px;
   width: 100%;
-}
-
-/* Animations */
-@keyframes pulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
+  border: 1px solid var(--border-color);
 }
 
 @keyframes openLetter {
   0% {
     opacity: 0;
-    transform: translateY(50px) scale(0.9);
+    transform: translateY(30px) scale(0.96);
   }
   100% {
     opacity: 1;
