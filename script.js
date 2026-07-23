@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Elements
   const form = document.getElementById('letter-form');
   const themeOptions = document.querySelectorAll('.theme-option');
   const linkResult = document.getElementById('link-result');
@@ -23,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentLetterData = null;
 
-  // 1. จัดการเลือก Theme UI
+  // 1. เลือก Theme UI
   themeOptions.forEach(option => {
     option.addEventListener('click', () => {
       themeOptions.forEach(opt => opt.classList.remove('active'));
@@ -32,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 2. Submit Form -> เข้ารหัสข้อมูลสร้าง Link
+  // 2. Submit Form -> เข้ารหัสข้อมูลเป็น Link
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -44,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
       theme: document.querySelector('input[name="paper-theme"]:checked').value
     };
 
-    // แปลงข้อมูลเป็น Base64 ปลอดภัยสำหรับ URL
     const encodedData = btoa(encodeURIComponent(JSON.stringify(data)));
     const shareableUrl = `${window.location.origin}${window.location.pathname}?data=${encodedData}`;
 
@@ -54,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     linkResult.classList.remove('hidden');
   });
 
-  // 3. ปุ่มคัดลอกลิงก์
+  // 3. คัดลอกลิงก์
   copyBtn.addEventListener('click', () => {
     generatedLinkInput.select();
     navigator.clipboard.writeText(generatedLinkInput.value);
@@ -62,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => copyBtn.textContent = 'คัดลอก', 2000);
   });
 
-  // 4. เช็คว่ามี URL Parameter (คนกดเปิดลิงก์มา) หรือไม่
+  // 4. เช็ค URL Parameter สำหรับคนกดลิงก์เข้ามาดู
   const urlParams = new URLSearchParams(window.location.search);
   const dataParam = urlParams.get('data');
 
@@ -82,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 5. ฟังก์ชันเตรียมข้อมูลใส่กระดาษจดหมาย
+  // 5. โหลดข้อมูลใส่กระดาษจดหมาย
   function loadLetterView(data) {
     editorSection.classList.add('hidden');
     viewerSection.classList.remove('hidden');
@@ -91,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
     viewSender.textContent = data.from;
     viewMessage.textContent = data.msg;
 
-    // ตรวจสอบรูปภาพ
     if (data.img && data.img.trim() !== '') {
       viewImage.src = data.img;
       viewImageContainer.classList.remove('hidden');
@@ -99,8 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
       viewImageContainer.classList.add('hidden');
     }
 
-    // ใส่ Class ธีมให้กระดาษ
-    letterPaper.className = 'letter-paper hidden'; // reset
+    letterPaper.className = 'letter-paper hidden';
     if (data.theme === 'theme-rose') {
       letterPaper.classList.add('theme-rose-paper');
     } else if (data.theme === 'theme-midnight') {
@@ -110,24 +106,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 6. แอนิเมชันเปิดจดหมาย (เมื่อกด Wax Seal)
+  // 6. แอนิเมชันเปิดจดหมาย
   waxSeal.addEventListener('click', () => {
-    // ซองจดหมายเปิด
     envelope.classList.add('open');
 
-    // รอแอนิเมชันฝาซองเปิด 0.8 วินาที แล้วแสดงกระดาษจดหมาย
     setTimeout(() => {
       envelopeWrapper.classList.add('hidden');
       letterPaper.classList.remove('hidden');
-    }, 800);
+    }, 700);
   });
 
-  // 7. ปุ่มกลับไปเขียนจดหมายใหม่
+  // 7. ปุ่มเขียนจดหมายใหม่
   btnBackEditor.addEventListener('click', () => {
-    // Reset URL
     window.history.pushState({}, document.title, window.location.pathname);
     
-    // Reset UI
     envelope.classList.remove('open');
     envelopeWrapper.classList.remove('hidden');
     letterPaper.classList.add('hidden');
