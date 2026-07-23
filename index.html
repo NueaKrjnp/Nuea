@@ -3,18 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Premium Letter - ส่งจดหมายสุดพรีเมียม</title>
+  <title>Minimal Letter - ส่งจดหมายออนไลน์</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Google Fonts สำหรับฟอนต์ไทยสวยๆ -->
-  <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- ================= Section 1: ฟอร์มสร้างจดหมาย (สำหรับผู้ส่ง) ================= -->
+  <!-- Section 1: ฟอร์มเขียนจดหมาย -->
   <div class="container" id="editor-section">
     <div class="card">
-      <h2>✉️ เขียนจดหมายพรีเมียม</h2>
-      <p class="subtitle">สร้างความประทับใจผ่านจดหมายออนไลน์สุดพิเศษ</p>
+      <h2>✉️ เขียนจดหมาย</h2>
+      <p class="subtitle">สร้างจดหมายออนไลน์เรียบหรู ส่งหาคนที่คุณต้องการ</p>
 
       <form id="letter-form">
         <div class="form-group">
@@ -42,20 +40,20 @@
           <div class="theme-selector">
             <label class="theme-option theme-classic active">
               <input type="radio" name="paper-theme" value="theme-classic" checked>
-              <span>Classic Gold</span>
+              <span>Classic Warm</span>
             </label>
             <label class="theme-option theme-rose">
               <input type="radio" name="paper-theme" value="theme-rose">
-              <span>Rose Romance</span>
+              <span>Soft Rose</span>
             </label>
             <label class="theme-option theme-midnight">
               <input type="radio" name="paper-theme" value="theme-midnight">
-              <span>Midnight Luxury</span>
+              <span>Dark Minimal</span>
             </label>
           </div>
         </div>
 
-        <button type="submit" class="btn-primary">สร้างลิงก์สำหรับส่งจดหมาย 🔗</button>
+        <button type="submit" class="btn-primary">สร้างลิงก์ส่งจดหมาย 🔗</button>
       </form>
 
       <!-- ส่วนแสดงลิงก์เมื่อสร้างเสร็จ -->
@@ -70,29 +68,27 @@
     </div>
   </div>
 
-  <!-- ================= Section 2: ซองจดหมาย & การแสดงผล (สำหรับผู้รับ) ================= -->
+  <!-- Section 2: ซองจดหมาย & แสดงผล -->
   <div class="container hidden" id="viewer-section">
     
     <!-- ซองจดหมายแบบปิด -->
     <div class="envelope-wrapper" id="envelope-wrapper">
       <div class="envelope" id="envelope">
-        <div class="envelope-back"></div>
-        <div class="envelope-paper-preview"></div>
         <div class="envelope-flaps">
           <div class="flap top-flap"></div>
           <div class="flap left-flap"></div>
           <div class="flap right-flap"></div>
           <div class="flap bottom-flap"></div>
         </div>
-        <!-- ตราครั่งกดเพื่อเปิด -->
+        <!-- ตราครั่ง -->
         <div class="wax-seal" id="wax-seal">
-          <div class="seal-inner">✦ OPEN ✦</div>
+          <div class="seal-inner">OPEN</div>
         </div>
       </div>
       <p class="click-hint">กดที่ตราครั่งเพื่อเปิดจดหมาย ✨</p>
     </div>
 
-    <!-- ตัวกระดาษจดหมาย (จะเลื่อนขึ้นมาเมื่อเปิด) -->
+    <!-- ตัวกระดาษจดหมาย -->
     <div class="letter-paper hidden" id="letter-paper">
       <div class="paper-content" id="paper-content">
         <div class="letter-header">
@@ -105,7 +101,7 @@
           </div>
         </div>
         <div class="letter-footer">
-          <p class="valediction">ด้วยความรู้สึกดีๆ,</p>
+          <p class="valediction">จาก</p>
           <p class="signature" id="view-sender">...</p>
         </div>
       </div>
