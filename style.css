@@ -44,7 +44,7 @@ body {
   display: none !important;
 }
 
-/* Card - Soft Minimal Style */
+/* Card Style */
 .card {
   background: var(--card-white);
   border: 1px solid var(--border-soft);
@@ -204,7 +204,7 @@ button {
   margin: 14px 0;
 }
 
-/* ================= Envelope Soft Luxury ================= */
+/* ================= Envelope Fix Bug ================= */
 .envelope-wrapper {
   display: flex;
   flex-direction: column;
@@ -222,6 +222,19 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+}
+
+.envelope.open {
+  overflow: visible;
+}
+
+.envelope-flaps {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .envelope-flaps .flap {
@@ -233,14 +246,16 @@ button {
 
 .top-flap {
   top: 0;
+  left: 0;
   border-width: 110px 160px 0 160px;
   border-color: #ece7dd transparent transparent transparent;
   transform-origin: top;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, z-index 0.2s 0.4s;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, z-index 0.2s 0.4s;
   z-index: 4;
 }
 
 .left-flap {
+  top: 0;
   left: 0;
   border-width: 110px 0 110px 160px;
   border-color: transparent transparent transparent #e8e3d8;
@@ -248,6 +263,7 @@ button {
 }
 
 .right-flap {
+  top: 0;
   right: 0;
   border-width: 110px 160px 110px 0;
   border-color: transparent #e8e3d8 transparent transparent;
@@ -256,12 +272,13 @@ button {
 
 .bottom-flap {
   bottom: 0;
+  left: 0;
   border-width: 0 160px 110px 160px;
   border-color: transparent transparent #f0ece3 transparent;
   z-index: 3;
 }
 
-/* Wax Seal Modern Minimal */
+/* Wax Seal */
 .wax-seal {
   position: absolute;
   width: 52px;
@@ -371,16 +388,14 @@ button {
 }
 
 .valediction {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-subtle);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 
 .signature {
   font-family: 'Cinzel', 'Noto Sans Thai', serif;
   font-size: 1.3rem;
-  margin-top: 6px;
+  margin-top: 4px;
   color: var(--accent-gold);
 }
 
